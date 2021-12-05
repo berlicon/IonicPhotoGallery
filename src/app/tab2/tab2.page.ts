@@ -7,6 +7,7 @@ import { PhotoService } from '../services/photo.service';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit {
+  date = 'Date';
 
   constructor(public photoService: PhotoService) { }
 
@@ -17,5 +18,13 @@ export class Tab2Page implements OnInit {
   addPhotoToGallery() {
     //alert('photo');
     this.photoService.addNewToGallery();
+  }
+
+  onAlert() {
+    alert(new Date().toString());
+  }
+
+  onDate() {
+    this.date = new Date().toString();
   }
 }
