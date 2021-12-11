@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Photo Gallery
+      Photo Gallery2
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -21,7 +21,7 @@
         size="6"
         *ngFor="let photo of photoService.photos; index as position"
       >
-        <ion-img [src]="photo.webviewPath"></ion-img>
+        <ion-img [src]="photo.webviewPath" (click)="showActionSheet(photo, position)"></ion-img>
       </ion-col>
     </ion-row>
   </ion-grid>
