@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
+import { IonAccordionGroup } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,7 @@ import { ActionSheetController } from '@ionic/angular';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  @ViewChild(IonAccordionGroup, { static: true }) accordionGroup: IonAccordionGroup;
 
   constructor(public actionSheetController: ActionSheetController) {}
 
@@ -18,10 +20,10 @@ export class Tab1Page {
         text: 'Delete',
         role: 'destructive',
         icon: 'trash',
-        //id: 'delete-button',
-        /*data: {
+        id: 'delete-button',
+        data: {
           type: 'delete'
-        },*/
+        },
         handler: () => {
           console.log('Delete clicked');
         }
@@ -29,14 +31,14 @@ export class Tab1Page {
         text: 'Share',
         icon: 'share',
         role: 'selected',
-        //data: 10,
+        data: 10,
         handler: () => {
           console.log('Share clicked');
         }
       }, {
         text: 'Play (open modal)',
         icon: 'caret-forward-circle',
-        //data: 'Data value',
+        data: 'Data value',
         handler: () => {
           console.log('Play clicked');
         }
@@ -65,4 +67,11 @@ export class Tab1Page {
     //data - not supported now
   }
 
+  logAccordionValue() {
+    console.log(this.accordionGroup.value);
+  }
+  
+  closeAccordion() {
+    this.accordionGroup.value = undefined;
+  }  
 }
