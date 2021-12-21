@@ -66,12 +66,35 @@
 
   <ion-button (click)="logAccordionValue()">Log Value of Accordion Group</ion-button>
   <ion-button (click)="closeAccordion()">Close All Accordions</ion-button>
-<br>
+  <br><br>
+
   <ion-button (click)="presentAlert()">Show Alert</ion-button>
   <ion-button (click)="presentAlertMultipleButtons()">Show Alert (multiple buttons)</ion-button>
   <ion-button (click)="presentAlertConfirm()">Show Alert (confirm)</ion-button>
   <ion-button (click)="presentAlertPrompt()">Show Alert (prompt)</ion-button>
   <ion-button (click)="presentAlertRadio()">Show Alert (radio)</ion-button>
   <ion-button (click)="presentAlertCheckbox()">Show Alert (checkbox)</ion-button>  
+  <br><br>
+
+  <!-- Default -->
+  <ion-badge>{{badgeNumber}}</ion-badge>
+
+  <!-- Colors -->
+  <ion-badge color="primary">11</ion-badge>
+  <ion-badge color="secondary" mode="ios">22</ion-badge>
+  <ion-badge color="tertiary" mode="md">33</ion-badge>
+  <ion-badge color="success">44</ion-badge>
+  <ion-badge color="warning">55</ion-badge>
+  <ion-badge color="danger">66</ion-badge>
+  <ion-badge color="light">77</ion-badge>
+  <ion-badge color="medium">88</ion-badge>
+  <ion-badge color="dark">99</ion-badge>
+
+  <!-- Item with badge on left and right -->
+  <ion-item>
+    <ion-badge slot="start">11</ion-badge>
+    <ion-label>My Item</ion-label>
+    <ion-badge slot="end">22</ion-badge>
+  </ion-item>
 
 </ion-content>

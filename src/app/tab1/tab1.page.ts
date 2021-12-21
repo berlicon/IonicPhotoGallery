@@ -11,6 +11,8 @@ import { AlertController } from '@ionic/angular';
 export class Tab1Page {
   @ViewChild(IonAccordionGroup, { static: true }) accordionGroup: IonAccordionGroup;
 
+  badgeNumber = 98;
+
   constructor(public actionSheetController: ActionSheetController, 
     public alertController: AlertController) {}
 
