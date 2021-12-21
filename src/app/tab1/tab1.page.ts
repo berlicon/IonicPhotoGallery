@@ -402,4 +402,17 @@ export class Tab1Page {
     });
     await popover.present();
   }
+
+  onButtonBlur() {
+    console.log('onButtonBlur');  //сработал только после алерта
+  }
+
+  onButtonFocus() {
+    console.log('onButtonFocus'); //сработало только после клика
+  }
+
+  onButtonClick() {
+    console.log('onButtonClick'); //работает ОК
+    //alert('onButtonClick');
+  }
 }
