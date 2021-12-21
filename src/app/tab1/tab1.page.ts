@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
 import { IonAccordionGroup } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { PopoverController } from '@ionic/angular';
+import { PopoverComponent } from './popover/popover.component';
 
 @Component({
   selector: 'app-tab1',
@@ -12,9 +14,12 @@ export class Tab1Page {
   @ViewChild(IonAccordionGroup, { static: true }) accordionGroup: IonAccordionGroup;
 
   badgeNumber = 98;
+  maxBreadcrumbs = 4;
 
-  constructor(public actionSheetController: ActionSheetController, 
-    public alertController: AlertController) {}
+  constructor(
+    public actionSheetController: ActionSheetController, 
+    public alertController: AlertController,
+    public popoverController: PopoverController) {}
 
   async presentActionSheet() {
     const actionSheet = await this.actionSheetController.create({
@@ -382,4 +387,19 @@ export class Tab1Page {
 
     await alert.present();
   }  
+
+  expandBreadcrumbs() {
+    this.maxBreadcrumbs = undefined;
+  }
+
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: PopoverComponent,
+      componentProps: {
+        collapsedBreadcrumbs: ev.detail.collapsedBreadcrumbs
+      },
+      event: ev
+    });
+    await popover.present();
+  }
 }

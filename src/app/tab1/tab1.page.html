@@ -96,5 +96,103 @@
     <ion-label>My Item</ion-label>
     <ion-badge slot="end">22</ion-badge>
   </ion-item>
+  <br><br>
+
+  <!-- Icon start -->
+  <ion-breadcrumbs color="danger">
+    <ion-breadcrumb href="#">
+      <ion-icon slot="start" name="home"></ion-icon>
+      Home
+    </ion-breadcrumb>
+    <ion-breadcrumb href="#files">
+      <ion-icon slot="start" name="folder"></ion-icon>
+      Files
+    </ion-breadcrumb>
+    <ion-breadcrumb href="#projects">
+      <ion-icon slot="start" name="folder"></ion-icon>
+      Projects
+    </ion-breadcrumb>
+    <ion-breadcrumb href="#user-research">
+      <ion-icon slot="start" name="folder"></ion-icon>
+      User Research
+    </ion-breadcrumb>
+    <ion-breadcrumb>
+      <ion-icon slot="start" name="document"></ion-icon>
+      Survey.txt
+    </ion-breadcrumb>
+  </ion-breadcrumbs>
+
+  <!-- Icon end -->
+  <ion-breadcrumbs>
+    <ion-breadcrumb href="#">
+      Home
+      <ion-icon slot="end" name="home"></ion-icon>
+    </ion-breadcrumb>
+    <ion-breadcrumb href="#files">
+      Files
+      <ion-icon slot="end" name="folder"></ion-icon>
+    </ion-breadcrumb>
+    <ion-breadcrumb href="#projects">
+      Projects
+      <ion-icon slot="end" name="folder"></ion-icon>
+    </ion-breadcrumb>
+    <ion-breadcrumb href="#user-research">
+      User Research
+      <ion-icon slot="end" name="folder"></ion-icon>
+    </ion-breadcrumb>
+    <ion-breadcrumb>
+      Survey.txt
+      <ion-icon slot="end" name="document"></ion-icon>
+    </ion-breadcrumb>
+  </ion-breadcrumbs>
+
+  <!-- Custom separator text -->
+  <ion-breadcrumbs [maxItems]="maxBreadcrumbs" [itemsBeforeCollapse]="0" [itemsAfterCollapse]="3"
+   (ionCollapsedClick)="expandBreadcrumbs()">
+    <ion-breadcrumb href="#">
+      Home
+      <span slot="separator">|</span>
+    </ion-breadcrumb>
+    <ion-breadcrumb href="#electronics">
+      Electronics
+      <span slot="separator">|</span>
+    </ion-breadcrumb>
+    <ion-breadcrumb href="#photography">
+      Photography
+      <span slot="separator">|</span>
+    </ion-breadcrumb>
+    <ion-breadcrumb href="#cameras">
+      Cameras
+      <span slot="separator">|</span>
+    </ion-breadcrumb>
+    <ion-breadcrumb href="#film">
+      Film
+      <span slot="separator">|</span>
+    </ion-breadcrumb>
+    <ion-breadcrumb>
+      35 mm
+    </ion-breadcrumb>
+  </ion-breadcrumbs>
+
+    <ion-breadcrumbs [maxItems]="4" (ionCollapsedClick)="presentPopover($event)">
+      <ion-breadcrumb href="#">
+        Home+
+      </ion-breadcrumb>
+      <ion-breadcrumb href="#electronics">
+        Electronics+
+      </ion-breadcrumb>
+      <ion-breadcrumb href="#photography">
+        Photography+
+      </ion-breadcrumb>
+      <ion-breadcrumb href="#cameras">
+        Cameras+
+      </ion-breadcrumb>
+      <ion-breadcrumb href="#film">
+        Film+
+      </ion-breadcrumb>
+      <ion-breadcrumb>
+        35 mm+
+      </ion-breadcrumb>
+    </ion-breadcrumbs>
 
 </ion-content>
