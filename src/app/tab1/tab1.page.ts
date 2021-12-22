@@ -4,6 +4,8 @@ import { IonAccordionGroup } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
 import { PopoverComponent } from './popover/popover.component';
+import { IonDatetime } from '@ionic/angular';
+import { format, parseISO } from 'date-fns';
 
 @Component({
   selector: 'app-tab1',
@@ -12,6 +14,7 @@ import { PopoverComponent } from './popover/popover.component';
 })
 export class Tab1Page {
   @ViewChild(IonAccordionGroup, { static: true }) accordionGroup: IonAccordionGroup;
+  @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
 
   badgeNumber = 98;
   maxBreadcrumbs = 4;
@@ -20,6 +23,9 @@ export class Tab1Page {
     { val: 'Sausage', isChecked: false },
     { val: 'Mushroom', isChecked: false }
   ];
+
+  dateValue = '';
+  dateValue2 = '';
 
   constructor(
     public actionSheetController: ActionSheetController, 
@@ -420,4 +426,16 @@ export class Tab1Page {
     console.log('onButtonClick'); //работает ОК
     //alert('onButtonClick');
   }
+
+  confirm() {
+    this.datetime.confirm();
+  }
+  
+  reset() {
+    this.datetime.reset();
+  }
+
+  formatDate(value: string) {
+    return format(parseISO(value), 'MMM dd yyyy');
+  }  
 }
