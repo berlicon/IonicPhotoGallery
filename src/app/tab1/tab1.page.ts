@@ -15,6 +15,11 @@ export class Tab1Page {
 
   badgeNumber = 98;
   maxBreadcrumbs = 4;
+  public form = [
+    { val: 'Pepperoni', isChecked: true },
+    { val: 'Sausage', isChecked: false },
+    { val: 'Mushroom', isChecked: false }
+  ];
 
   constructor(
     public actionSheetController: ActionSheetController, 

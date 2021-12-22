@@ -312,6 +312,31 @@
         <ion-icon name="walk" slot="start"></ion-icon>
         <ion-label>Card Button Item 2</ion-label>
       </ion-item>
-    </ion-card>    
+    </ion-card> 
+    <br><br>
+
+    <!-- Default Checkbox -->
+    <ion-checkbox></ion-checkbox>
+
+    <!-- Disabled Checkbox -->
+    <ion-checkbox disabled="true"></ion-checkbox>
+
+    <!-- Checked Checkbox -->
+    <ion-checkbox checked="true"></ion-checkbox>
+
+    <!-- Checkbox Colors -->
+    <ion-checkbox color="primary"></ion-checkbox>
+    <ion-checkbox color="secondary"></ion-checkbox>
+    <ion-checkbox color="danger"></ion-checkbox>
+    <ion-checkbox color="light"></ion-checkbox>
+    <ion-checkbox color="dark"></ion-checkbox>
+
+    <!-- Checkboxes in a List -->
+    <ion-list>
+      <ion-item *ngFor="let entry of form">
+        <ion-label>{{entry.val}}</ion-label>
+        <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+      </ion-item>
+    </ion-list>    
 
 </ion-content>
