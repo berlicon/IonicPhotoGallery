@@ -509,4 +509,11 @@ export class Tab1Page {
     });
     await picker.present();
   }
+
+  
+  onFabClick(name: string) {
+    console.log(name);
+    alert(name);
+  }
+
 }
