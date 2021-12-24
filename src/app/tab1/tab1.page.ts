@@ -1,11 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, PickerColumnOption } from '@ionic/angular';
 import { IonAccordionGroup } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
 import { PopoverComponent } from './popover/popover.component';
 import { IonDatetime } from '@ionic/angular';
 import { format, parseISO } from 'date-fns';
+import { PickerController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -27,10 +28,25 @@ export class Tab1Page {
   dateValue = '';
   dateValue2 = '';
 
+  pickingOptions = {
+    name: "animal",
+    options: [
+      { text: "Dog", value: "dog" },
+      { text: "Cat", value: "cat" },
+      { text: "Bird", value: "bird" },
+    ],
+  };
+  
+  picked: {
+    animal: "",
+  };
+
   constructor(
     public actionSheetController: ActionSheetController, 
     public alertController: AlertController,
-    public popoverController: PopoverController) {}
+    public popoverController: PopoverController,
+    public pickerController: PickerController,
+    ) {}
 
   async presentActionSheet() {
     const actionSheet = await this.actionSheetController.create({
@@ -438,4 +454,59 @@ export class Tab1Page {
   formatDate(value: string) {
     return format(parseISO(value), 'MMM dd yyyy');
   }  
+
+  async openPicker() {
+    let columns = [
+      {
+        name: 'Euro',
+        cssClass: 'euro-class',
+        options: []
+      },
+      {
+        name: 'Komma',
+        cssClass: 'komma-class',
+        options: []
+      },
+      {
+        name: 'Cent',
+        cssClass: 'cent-class',
+        options: []
+      },
+    ];
+
+    for (let euroCounter = 0; euroCounter < 100; euroCounter++) columns[0].options.push({
+      text: euroCounter.toString(),
+      value: euroCounter
+    });
+
+    columns[1].options.push({
+      text: ',',
+      value: undefined
+    });
+
+    for (let centCounter = 0; centCounter < 100; centCounter++) columns[2].options.push({
+      text: centCounter<10?'0'+centCounter.toString():centCounter.toString(),
+      value: centCounter
+    });
+
+    const picker = await this.pickerController.create({
+      columns: [this.pickingOptions],
+      //columns: columns,
+      buttons: [
+        {
+          text: "Cancel",
+          role: "cancel",
+        },
+        {
+          text: "Confirm",
+          handler: (value) => {
+            //debugger;
+            this.picked = value;
+            console.log(`Got Value ${JSON.stringify(value)}`);
+          },
+        },
+      ],
+    });
+    await picker.present();
+  }
 }

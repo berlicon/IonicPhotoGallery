@@ -479,6 +479,10 @@
         </ng-template>
       </ion-popover>
     </ion-item>    
+    <br><br>
 
+    <ion-button (click)="openPicker()">SHOW PICKER</ion-button>
+    <!-- <p *ngIf="picked.animal">picked: {{ picked.animal.text }}</p> -->
+    <p >picked: {{ picked?.animal?.text }}</p>
 
 </ion-content>
