@@ -758,12 +758,15 @@
     <ion-button (click)="toggleInfiniteScroll()" expand="block">
       Toggle Infinite Scroll
     </ion-button>
+    <ion-button (click)="untoggleInfiniteScroll()" expand="block">
+      UnToggle Infinite Scroll
+    </ion-button>
   
     <ion-list></ion-list>
   
     <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
       <ion-infinite-scroll-content
-        loadingSpinner="bubbles"
+        loadingSpinner="dots"
         loadingText="Loading more data...">
         {{counter}}
       </ion-infinite-scroll-content>

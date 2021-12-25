@@ -536,4 +536,9 @@ export class Tab1Page {
   toggleInfiniteScroll() {
     this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
   }
+
+  untoggleInfiniteScroll() {
+    this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
+    this.counter = 0;
+  }
 }
