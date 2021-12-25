@@ -545,7 +545,7 @@
     </ion-fab> -->
   
     <!-- fab placed in the center of the content with a list on each side -->
-    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab vertical="center" horizontal="end" slot="fixed">
       <ion-fab-button>
         <ion-icon name="share"></ion-icon>
       </ion-fab-button>
@@ -563,9 +563,9 @@
       </ion-fab-list>
     </ion-fab>
 
-    <ion-fab slot="fixed">
+    <!-- <ion-fab slot="fixed">
       <ion-fab-button>Button</ion-fab-button>
-    </ion-fab>
+    </ion-fab> -->
 
     <ion-fab-button>Default</ion-fab-button>
 
@@ -753,7 +753,21 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+    <br><br>
 
-
+    <ion-button (click)="toggleInfiniteScroll()" expand="block">
+      Toggle Infinite Scroll
+    </ion-button>
+  
+    <ion-list></ion-list>
+  
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+        {{counter}}
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  
 
 </ion-content>

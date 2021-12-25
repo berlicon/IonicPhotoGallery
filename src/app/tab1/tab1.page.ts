@@ -7,6 +7,7 @@ import { PopoverComponent } from './popover/popover.component';
 import { IonDatetime } from '@ionic/angular';
 import { format, parseISO } from 'date-fns';
 import { PickerController } from '@ionic/angular';
+import { IonInfiniteScroll } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -16,6 +17,7 @@ import { PickerController } from '@ionic/angular';
 export class Tab1Page {
   @ViewChild(IonAccordionGroup, { static: true }) accordionGroup: IonAccordionGroup;
   @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
+  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
   badgeNumber = 98;
   maxBreadcrumbs = 4;
@@ -40,6 +42,8 @@ export class Tab1Page {
   picked: {
     animal: "",
   };
+
+  counter = 0;
 
   constructor(
     public actionSheetController: ActionSheetController, 
@@ -509,11 +513,27 @@ export class Tab1Page {
     });
     await picker.present();
   }
-
   
   onFabClick(name: string) {
     console.log(name);
     alert(name);
   }
 
+  loadData(event) {
+    setTimeout(() => {
+      this.counter += 300;
+      console.log('Done');
+      event.target.complete();
+
+      // App logic to determine if all data is loaded
+      // and disable the infinite scroll
+      if (this.counter > 1000) {
+        event.target.disabled = true;
+      }
+    }, 500);
+  }
+
+  toggleInfiniteScroll() {
+    this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
+  }
 }
