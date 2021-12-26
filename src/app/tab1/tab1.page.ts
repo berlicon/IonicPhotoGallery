@@ -8,6 +8,7 @@ import { IonDatetime } from '@ionic/angular';
 import { format, parseISO } from 'date-fns';
 import { PickerController } from '@ionic/angular';
 import { IonInfiniteScroll } from '@ionic/angular';
+import { IonImg, IonItem, IonLabel, IonList, IonThumbnail } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -44,6 +45,18 @@ export class Tab1Page {
   };
 
   counter = 0;
+
+  items = [{
+    'text': 'Item 1',
+    'src': 'https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y'
+  }, {
+    'text': 'Item 2',
+    'src': 'https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y'
+  }, {
+    'text': 'Item 3',
+    'src': 'https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y'
+    //'src': '/path/to/external/file.png'
+  }];
 
   constructor(
     public actionSheetController: ActionSheetController, 
