@@ -9,6 +9,7 @@ import { format, parseISO } from 'date-fns';
 import { PickerController } from '@ionic/angular';
 import { IonInfiniteScroll } from '@ionic/angular';
 import { IonImg, IonItem, IonLabel, IonList, IonThumbnail } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -63,6 +64,7 @@ export class Tab1Page {
     public alertController: AlertController,
     public popoverController: PopoverController,
     public pickerController: PickerController,
+    private menu: MenuController
     ) {}
 
   async presentActionSheet() {
@@ -113,7 +115,7 @@ export class Tab1Page {
     await actionSheet.present();
 
     const x = await actionSheet.onDidDismiss();
-    debugger;
+    //debugger;
     const { role, data } = x;
     console.log('onDidDismiss resolved with role and data', role, data);
 
@@ -553,5 +555,19 @@ export class Tab1Page {
   untoggleInfiniteScroll() {
     this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
     this.counter = 0;
+  }
+
+  openFirst() {
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
+  }
+
+  openEnd() {
+    this.menu.open('end');
+  }
+
+  openCustom() {
+    this.menu.enable(true, 'custom');
+    this.menu.open('custom');
   }
 }
