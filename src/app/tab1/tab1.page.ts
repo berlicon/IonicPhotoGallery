@@ -66,6 +66,10 @@ export class Tab1Page {
   showModal3 = false;
   showModal4 = false;
 
+  enableBackdropDismiss = false;
+  showBackdrop = false;
+  shouldPropagate = false;
+
   constructor(
     public actionSheetController: ActionSheetController, 
     public alertController: AlertController,
@@ -607,12 +611,16 @@ export class Tab1Page {
       }
     });
 
-
     //return await modal.present();
     modal.present();
 
     const { data } = await modal.onWillDismiss();
     console.log(data);
-
   }
+
+  showHideBackdrop() {
+    this.enableBackdropDismiss = !this.enableBackdropDismiss;
+    this.showBackdrop = !this.showBackdrop;
+    this.shouldPropagate = !this.shouldPropagate;
+    }
 }

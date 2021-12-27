@@ -1820,6 +1820,27 @@
     <app-angular-component title="Ionic"></app-angular-component>
   </ng-template>
 </ion-modal>
+<br><br>
+
+<ion-button (click)="showHideBackdrop()">show/Hide Backdrop</ion-button>
+<!-- Default backdrop -->
+<ion-backdrop></ion-backdrop>
+
+<!-- Backdrop that is not tappable -->
+<ion-backdrop tappable="false"></ion-backdrop>
+
+<!-- Backdrop that is not visible -->
+<ion-backdrop visible="false"></ion-backdrop>
+
+<!-- Backdrop with propagation -->
+<ion-backdrop stopPropagation="false"></ion-backdrop>
+
+<!-- Backdrop that sets dynamic properties -->
+<ion-backdrop
+  [tappable]="enableBackdropDismiss"
+  [visible]="showBackdrop"
+  [stopPropagation]="shouldPropagate">
+</ion-backdrop>
   
 
 </ion-content>
