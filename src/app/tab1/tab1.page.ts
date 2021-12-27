@@ -8,8 +8,10 @@ import { IonDatetime } from '@ionic/angular';
 import { format, parseISO } from 'date-fns';
 import { PickerController } from '@ionic/angular';
 import { IonInfiniteScroll } from '@ionic/angular';
-import { IonImg, IonItem, IonLabel, IonList, IonThumbnail } from '@ionic/angular';
 import { MenuController } from '@ionic/angular';
+import { IonRouterOutlet } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { ModalComponent } from './modal/modal.component';
 
 @Component({
   selector: 'app-tab1',
@@ -59,12 +61,19 @@ export class Tab1Page {
     //'src': '/path/to/external/file.png'
   }];
 
+  showModal1 = false;
+  showModal2 = false;
+  showModal3 = false;
+  showModal4 = false;
+
   constructor(
     public actionSheetController: ActionSheetController, 
     public alertController: AlertController,
     public popoverController: PopoverController,
     public pickerController: PickerController,
-    private menu: MenuController
+    private menu: MenuController,
+    public routerOutlet: IonRouterOutlet,
+    public modalController: ModalController
     ) {}
 
   async presentActionSheet() {
@@ -569,5 +578,41 @@ export class Tab1Page {
   openCustom() {
     this.menu.enable(true, 'custom');
     this.menu.open('custom');
+  }
+
+  showModalWindow1() {
+    this.showModal1 = !this.showModal1;
+  }
+
+  showModalWindow2() {
+    this.showModal2 = !this.showModal2;
+  }
+
+  showModalWindow3() {
+    this.showModal3 = !this.showModal3;
+  }
+
+  showModalWindow4() {
+    this.showModal4 = !this.showModal4;
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: ModalComponent,
+      cssClass: 'my-custom-class',
+      componentProps: {
+        'firstName': 'Douglas',
+        'lastName': 'Adams',
+        'middleInitial': 'N'
+      }
+    });
+
+
+    //return await modal.present();
+    modal.present();
+
+    const { data } = await modal.onWillDismiss();
+    console.log(data);
+
   }
 }

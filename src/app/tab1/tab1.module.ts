@@ -6,6 +6,7 @@ import { Tab1Page } from './tab1.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { PopoverComponent } from './popover/popover.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { PopoverComponent } from './popover/popover.component';
     ExploreContainerComponentModule,
     Tab1PageRoutingModule
   ],
-  declarations: [Tab1Page, PopoverComponent]
+  declarations: [Tab1Page, PopoverComponent, ModalComponent]
 })
 export class Tab1PageModule {}

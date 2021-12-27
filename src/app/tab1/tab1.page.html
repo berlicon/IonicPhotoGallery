@@ -1770,6 +1770,56 @@
   <!-- the main content -->
   <!-- <ion-router-outlet id="main"></ion-router-outlet>
 </ion-split-pane> -->
+<br><br>
+
+<ion-button (click)="showModalWindow1()">Open Modal1</ion-button>
+<ion-button (click)="showModalWindow2()">Open Modal2</ion-button>
+<ion-button (click)="showModalWindow3()">Open Modal3</ion-button>
+<ion-button (click)="showModalWindow4()">Open Modal4</ion-button>
+<ion-button (click)="presentModal()">Open Modal Component</ion-button>
+<!-- Default -->
+<ion-modal [isOpen]="showModal1">
+  <ng-template>
+    <ion-content>Modal Content1</ion-content>
+  </ng-template>
+</ion-modal>
+
+<!-- Use a trigger -->
+<ion-button id="trigger-button">Click to open modal</ion-button>
+<ion-modal trigger="trigger-button">
+  <ng-template>
+    <ion-content>Modal Content+</ion-content>
+  </ng-template>
+</ion-modal>
+
+<!-- Sheet Modal -->
+<ion-modal
+  [isOpen]="showModal2"
+  [breakpoints]="[0.1, 0.5, 1]"
+  [initialBreakpoint]="0.5"
+>
+  <ng-template>
+    <ion-content>Modal Content2</ion-content>
+  </ng-template>
+</ion-modal>
+
+<!-- Card Modal -->
+<ion-modal
+  [isOpen]="showModal3"
+  [swipeToClose]="true"
+  [presentingElement]="routerOutlet.nativeEl"
+>
+  <ng-template>
+    <ion-content>Modal Content3</ion-content>
+  </ng-template>
+</ion-modal>
+
+<!-- Passing Props -->
+<ion-modal [isOpen]="showModal4">
+  <ng-template>
+    <app-angular-component title="Ionic"></app-angular-component>
+  </ng-template>
+</ion-modal>
   
 
 </ion-content>
