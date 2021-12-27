@@ -70,6 +70,9 @@ export class Tab1Page {
   showBackdrop = false;
   shouldPropagate = false;
 
+  showPopover1 = false;
+  showPopover2 = false;
+
   constructor(
     public actionSheetController: ActionSheetController, 
     public alertController: AlertController,
@@ -623,4 +626,12 @@ export class Tab1Page {
     this.showBackdrop = !this.showBackdrop;
     this.shouldPropagate = !this.shouldPropagate;
     }
-}
+
+    showHidePopover1() {
+      this.showPopover1 = !this.showPopover1;
+    }
+
+    showHidePopover2() {
+      this.showPopover2 = !this.showPopover2;
+      }
+  }
