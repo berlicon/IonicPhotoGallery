@@ -675,4 +675,8 @@ export class Tab1Page {
       };
     }, 5000);
   }
+
+  public customFormatter(value: number) {
+    return `${value}%`
+  }
 }
