@@ -12,6 +12,7 @@ import { MenuController } from '@ionic/angular';
 import { IonRouterOutlet } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { ModalComponent } from './modal/modal.component';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -80,7 +81,8 @@ export class Tab1Page {
     public pickerController: PickerController,
     private menu: MenuController,
     public routerOutlet: IonRouterOutlet,
-    public modalController: ModalController
+    public modalController: ModalController,
+    public loadingController: LoadingController
     ) {}
 
   async presentActionSheet() {
@@ -627,11 +629,38 @@ export class Tab1Page {
     this.shouldPropagate = !this.shouldPropagate;
     }
 
-    showHidePopover1() {
-      this.showPopover1 = !this.showPopover1;
+  showHidePopover1() {
+    this.showPopover1 = !this.showPopover1;
+  }
+
+  showHidePopover2() {
+    this.showPopover2 = !this.showPopover2;
     }
 
-    showHidePopover2() {
-      this.showPopover2 = !this.showPopover2;
-      }
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Please wait...',
+      duration: 2000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
   }
+  
+  async presentLoadingWithOptions() {
+    const loading = await this.loadingController.create({
+      spinner: null,
+      duration: 5000,
+      message: 'Click the backdrop to dismiss early...',
+      translucent: true,
+      cssClass: 'custom-class custom-loading',
+      backdropDismiss: true
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed with role:', role);
+  }
+}
