@@ -74,6 +74,8 @@ export class Tab1Page {
   showPopover1 = false;
   showPopover2 = false;
 
+  data: any;
+
   constructor(
     public actionSheetController: ActionSheetController, 
     public alertController: AlertController,
@@ -662,5 +664,15 @@ export class Tab1Page {
 
     const { role, data } = await loading.onDidDismiss();
     console.log('Loading dismissed with role:', role);
+  }
+
+  ionViewWillEnter() {
+    setTimeout(() => {
+      this.data = {
+        'heading': 'Normal text',
+        'para1': 'Lorem ipsum dolor sit amet, consectetur',
+        'para2': 'adipiscing elit.'
+      };
+    }, 5000);
   }
 }
