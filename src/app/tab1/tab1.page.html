@@ -1942,6 +1942,22 @@
 
 <ion-button (click)="presentLoading()">presentLoading</ion-button>
 <ion-button (click)="presentLoadingWithOptions()">presentLoadingWithOptions</ion-button>
+<br><br>
+
+<!-- Default Progressbar -->
+<ion-progress-bar></ion-progress-bar><br>
+
+<!-- Default Progressbar with 50 percent -->
+<ion-progress-bar value="0.1"></ion-progress-bar><br>
+
+<!-- Colorize Progressbar -->
+<ion-progress-bar color="primary" value="0.2"></ion-progress-bar><br>
+<ion-progress-bar color="secondary" value="0.3"></ion-progress-bar><br>
+
+<!-- Other types -->
+<ion-progress-bar value="0.4" buffer="0.5"></ion-progress-bar><br>
+<ion-progress-bar type="indeterminate"></ion-progress-bar><br>
+<ion-progress-bar type="indeterminate" reversed="true"></ion-progress-bar><br>
   
 
 </ion-content>
