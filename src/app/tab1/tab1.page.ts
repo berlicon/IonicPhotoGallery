@@ -679,4 +679,13 @@ export class Tab1Page {
   public customFormatter(value: number) {
     return `${value}%`
   }
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }  
 }
