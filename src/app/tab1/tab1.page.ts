@@ -13,6 +13,8 @@ import { IonRouterOutlet } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { ModalComponent } from './modal/modal.component';
 import { LoadingController } from '@ionic/angular';
+import { IonReorderGroup } from '@ionic/angular';
+import { ItemReorderEventDetail } from '@ionic/core';
 
 @Component({
   selector: 'app-tab1',
@@ -23,6 +25,7 @@ export class Tab1Page {
   @ViewChild(IonAccordionGroup, { static: true }) accordionGroup: IonAccordionGroup;
   @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+  @ViewChild(IonReorderGroup) reorderGroup: IonReorderGroup;
 
   badgeNumber = 98;
   maxBreadcrumbs = 4;
@@ -687,5 +690,20 @@ export class Tab1Page {
       console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
-  }  
+  } 
+  
+  doReorder(ev: CustomEvent<ItemReorderEventDetail>) {
+    // The `from` and `to` properties contain the index of the item
+    // when the drag started and ended, respectively
+    console.log('Dragged from index', ev.detail.from, 'to', ev.detail.to);
+
+    // Finish the reorder and position the item in the DOM based on
+    // where the gesture ended. This method can also be called directly
+    // by the reorder group
+    ev.detail.complete();
+  }
+
+  toggleReorderGroup() {
+    this.reorderGroup.disabled = !this.reorderGroup.disabled;
+  }
 }
