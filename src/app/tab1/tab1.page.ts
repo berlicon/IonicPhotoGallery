@@ -15,6 +15,7 @@ import { ModalComponent } from './modal/modal.component';
 import { LoadingController } from '@ionic/angular';
 import { IonReorderGroup } from '@ionic/angular';
 import { ItemReorderEventDetail } from '@ionic/core';
+import { ToastController } from '@ionic/angular';
 
 interface User {
   id: number;
@@ -136,7 +137,8 @@ export class Tab1Page {
     private menu: MenuController,
     public routerOutlet: IonRouterOutlet,
     public modalController: ModalController,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    public toastController: ToastController
     ) {}
 
   async presentActionSheet() {
@@ -774,5 +776,42 @@ export class Tab1Page {
     }
 
     return o1.id === o2.id;
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Your settings have been saved.',
+      duration: 2000
+    });
+    toast.present();
+  }
+
+  async presentToastWithOptions() {
+    const toast = await this.toastController.create({
+      header: 'Toast header',
+      message: 'Click to Close',
+      icon: 'information-circle',
+      position: 'top',
+      buttons: [
+        {
+          side: 'start',
+          icon: 'star',
+          text: 'Favorite',
+          handler: () => {
+            console.log('Favorite clicked');
+          }
+        }, {
+          text: 'Done',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    await toast.present();
+
+    const { role } = await toast.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
   }
 }
