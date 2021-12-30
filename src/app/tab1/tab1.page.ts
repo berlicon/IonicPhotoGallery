@@ -16,6 +16,12 @@ import { LoadingController } from '@ionic/angular';
 import { IonReorderGroup } from '@ionic/angular';
 import { ItemReorderEventDetail } from '@ionic/core';
 
+interface User {
+  id: number;
+  first: string;
+  last: string;
+}
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -78,6 +84,42 @@ export class Tab1Page {
   showPopover2 = false;
 
   data: any;
+
+  users: User[] = [
+    {
+      id: 1,
+      first: 'Alice',
+      last: 'Smith',
+    },
+    {
+      id: 2,
+      first: 'Bob',
+      last: 'Davis',
+    },
+    {
+      id: 3,
+      first: 'Charlie',
+      last: 'Rosenburg',
+    }
+  ];
+
+  customAlertOptions: any = {
+    header: 'Pizza Toppings',
+    subHeader: 'Select your toppings',
+    message: '$1.00 per topping',
+    translucent: true
+  };
+
+  customPopoverOptions: any = {
+    header: 'Hair Color',
+    subHeader: 'Select your hair color',
+    message: 'Only select your dominant hair color'
+  };
+
+  customActionSheetOptions: any = {
+    header: 'Colors',
+    subHeader: 'Select your favorite color'
+  };
 
   constructor(
     public actionSheetController: ActionSheetController, 
@@ -709,5 +751,21 @@ export class Tab1Page {
 
   segmentChanged(ev: any) {
     console.log('Segment changed', ev);
+  }
+
+  compareWith(o1: User, o2: User) {
+    return o1 && o2 ? o1.id === o2.id : o1 === o2;
+  }
+
+  compareWith2(o1: User, o2: User | User[]) {
+    if (!o1 || !o2) {
+      return o1 === o2;
+    }
+
+    if (Array.isArray(o2)) {
+      return o2.some((u: User) => u.id === o1.id);
+    }
+
+    return o1.id === o2.id;
   }
 }
