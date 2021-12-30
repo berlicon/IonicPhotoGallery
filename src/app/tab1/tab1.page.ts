@@ -706,4 +706,8 @@ export class Tab1Page {
   toggleReorderGroup() {
     this.reorderGroup.disabled = !this.reorderGroup.disabled;
   }
+
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev);
+  }
 }
