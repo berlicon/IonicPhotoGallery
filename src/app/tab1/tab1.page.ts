@@ -121,6 +121,13 @@ export class Tab1Page {
     subHeader: 'Select your favorite color'
   };
 
+  // Optional parameters to pass to the swiper instance.
+  // See http://idangero.us/swiper/api/ for valid options.
+  slideOpts = {
+    initialSlide: 1,
+    speed: 400
+  };
+
   constructor(
     public actionSheetController: ActionSheetController, 
     public alertController: AlertController,
