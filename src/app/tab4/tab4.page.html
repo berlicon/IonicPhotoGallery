@@ -18,8 +18,15 @@
 
 <ion-button (click)="logDeviceInfo()">log DeviceInfo</ion-button>
 <ion-button (click)="logBatteryInfo()">log BatteryInfo</ion-button>
-<ion-text color="blue">
+<ion-text color="primary">
   <h4>{{info}}</h4>
+</ion-text>
+
+<ion-button (click)="logAccel()">log Accel</ion-button>
+<ion-button (click)="stopAcceleration()">stop Acceleration</ion-button>
+<ion-button (click)="removeListeners()">remove Listeners</ion-button>
+<ion-text color="secondary">
+  <h4>{{acc}}</h4>
 </ion-text>
 
 </ion-content>

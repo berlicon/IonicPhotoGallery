@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { Device } from '@capacitor/device';
+import { AccelListenerEvent, Motion } from '@capacitor/motion';
+import { PluginListenerHandle } from '@capacitor/core';
 
 interface CatFact {
   length: number;
@@ -19,6 +21,10 @@ interface CatFact {
 export class Tab4Page {
   catFact = 'no cat';
   info = 'no info';
+
+  accelHandler: PluginListenerHandle;
+  event: AccelListenerEvent;
+  acc = 'no acc';
 
   constructor(private menu: MenuController, 
     private http: HttpClient) {}
@@ -59,5 +65,30 @@ export class Tab4Page {
     this.info = '***' + new Date().toString();
     let x = await Device.getBatteryInfo()
     this.info = x.toString() + ` ${x.batteryLevel} ${x.isCharging}`;
+  }
+  
+  async logAccel() {
+    try {
+      //await DeviceMotionEvent.requestPermission();
+    } catch (e) {
+      // Handle error
+      return;
+    }
+  
+    // Once the user approves, can start listening:
+    this.accelHandler = await Motion.addListener('accel', event => {
+      console.log('Device motion event:', event);
+      this.acc = event.toString() + ` ${event.acceleration.x} ${event.acceleration.y}`;
+    });
+  }
+    
+  async stopAcceleration() {
+    if (this.accelHandler) {
+      this.accelHandler.remove();
+    }
+  }
+    
+  async removeListeners() {
+    Motion.removeAllListeners();
   }
 }
