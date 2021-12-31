@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import { Device } from '@capacitor/device';
 
 interface CatFact {
   length: number;
@@ -16,7 +17,8 @@ interface CatFact {
   styleUrls: ['tab4.page.scss']
 })
 export class Tab4Page {
-  catFact = 'none';
+  catFact = 'no cat';
+  info = 'no info';
 
   constructor(private menu: MenuController, 
     private http: HttpClient) {}
@@ -45,5 +47,13 @@ export class Tab4Page {
   
   async hapticsImpact() {
     await Haptics.impact({ style: ImpactStyle.Medium });
+  }
+  
+  async logDeviceInfo() {
+    this.info = await Device.getInfo().toString();
+  }
+  
+  async logBatteryInfo() {
+    this.info = await Device.getBatteryInfo().toString();
   }
 }
