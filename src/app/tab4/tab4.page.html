@@ -1,0 +1,16 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Features
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+<ion-button (click)="getData()">Get data from web api</ion-button>
+<ion-text color="danger">
+  <h4>{{catFact}}</h4>
+</ion-text>
+
+</ion-content>
