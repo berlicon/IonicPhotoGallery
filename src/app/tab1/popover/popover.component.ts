@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: 'popover.component.html',
 })
 export class PopoverComponent {
-  @Input() collapsedBreadcrumbs: HTMLElement[] = [];
+  @Input() collapsedBreadcrumbs: any[] = []; //HTMLElement
 
   constructor() {}
 

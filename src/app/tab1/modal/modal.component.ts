@@ -10,6 +10,8 @@ export class ModalComponent {
   @Input() lastName: string;
   @Input() middleInitial: string;
 
+  @Input() title: string;
+
   constructor(public modalController: ModalController) {}
 
   dismiss() {

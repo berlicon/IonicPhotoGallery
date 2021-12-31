@@ -869,7 +869,7 @@
 </ion-item>
 
 <!-- Item as a Button -->
-<ion-item button (click)="buttonClick()">
+<ion-item button (click)="onButtonClick()">
   <ion-label>
     Button Item
   </ion-label>
@@ -894,7 +894,7 @@
   </ion-label>
 </ion-item>
 
-<ion-item button (click)="buttonClick()" detail>
+<ion-item button (click)="onButtonClick()" detail>
   <ion-label>
     Button Item with Detail Arrow
   </ion-label>
@@ -998,7 +998,7 @@
   </ion-item>
 </ion-list>
 
-<ion-item button (click)="testClick()">
+<ion-item button (click)="onButtonClick()">
   <ion-avatar slot="start">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
   </ion-avatar>
@@ -1027,7 +1027,7 @@
   <ion-button fill="outline" slot="end">View</ion-button>
 </ion-item>
 
-<ion-item button (click)="testClick()">
+<ion-item button (click)="onButtonClick()">
   <ion-thumbnail slot="start">
     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
   </ion-thumbnail>
@@ -1817,7 +1817,8 @@
 <!-- Passing Props -->
 <ion-modal [isOpen]="showModal4">
   <ng-template>
-    <app-angular-component title="Ionic"></app-angular-component>
+    <!-- <app-angular-component title="Ionic"></app-angular-component> -->
+    <modal-component title="Ionic"></modal-component>
   </ng-template>
 </ion-modal>
 <br><br>
@@ -1974,7 +1975,7 @@
     </ion-list-header>
     <ion-item>
       <ion-avatar slot="start">
-        <img src="./avatar.svg">
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
       </ion-avatar>
       <ion-label>
         <h3>
@@ -1990,7 +1991,7 @@
     </ion-item>
     <ion-item>
       <ion-thumbnail slot="start">
-        <img src="./thumbnail.svg">
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
       </ion-thumbnail>
       <ion-label>
         <h3>
@@ -2819,7 +2820,7 @@
 
 <ion-toolbar>
   <ion-buttons slot="primary">
-    <ion-button (click)="clickedStar()">
+    <ion-button (click)="onButtonClick()">
       <ion-icon slot="icon-only" name="star"></ion-icon>
     </ion-button>
   </ion-buttons>
@@ -2832,7 +2833,7 @@
 
 <ion-toolbar>
   <ion-buttons slot="primary">
-    <ion-button (click)="clickedSearch()">
+    <ion-button (click)="onButtonClick()">
       <ion-icon slot="icon-only" name="search"></ion-icon>
     </ion-button>
   </ion-buttons>

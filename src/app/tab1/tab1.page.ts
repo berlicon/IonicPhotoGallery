@@ -55,7 +55,10 @@ export class Tab1Page {
   };
   
   picked: {
-    animal: "",
+    animal: {
+      text: string,
+      value: string
+    },
   };
 
   counter = 0;
@@ -84,7 +87,12 @@ export class Tab1Page {
   showPopover1 = false;
   showPopover2 = false;
 
+  pepperoni = false;
+  sausage = true;
+  mushrooms = false;
+
   data: any;
+  item: any;
 
   users: User[] = [
     {
@@ -142,6 +150,7 @@ export class Tab1Page {
     ) {}
 
   async presentActionSheet() {
+    debugger;
     const actionSheet = await this.actionSheetController.create({
       header: 'Albums',
       cssClass: 'my-custom-class',
@@ -194,6 +203,18 @@ export class Tab1Page {
     console.log('onDidDismiss resolved with role and data', role, data);
 
     //data - not supported now
+  }
+
+  favorite(item) {
+    console.log(item);
+  }
+
+  share(item) {
+    console.log(item);
+  }
+
+  unread(item) {
+    console.log(item);
   }
 
   logAccordionValue() {
@@ -743,7 +764,7 @@ export class Tab1Page {
     }, 2000);
   } 
   
-  doReorder(ev: CustomEvent<ItemReorderEventDetail>) {
+  doReorder(ev: CustomEvent<ItemReorderEventDetail> | any) {
     // The `from` and `to` properties contain the index of the item
     // when the drag started and ended, respectively
     console.log('Dragged from index', ev.detail.from, 'to', ev.detail.to);
