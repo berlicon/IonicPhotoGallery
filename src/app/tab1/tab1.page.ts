@@ -150,7 +150,7 @@ export class Tab1Page {
     ) {}
 
   async presentActionSheet() {
-    debugger;
+    //debugger;
     const actionSheet = await this.actionSheetController.create({
       header: 'Albums',
       cssClass: 'my-custom-class',
