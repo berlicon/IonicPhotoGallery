@@ -50,10 +50,14 @@ export class Tab4Page {
   }
   
   async logDeviceInfo() {
-    this.info = await Device.getInfo().toString();
+    this.info = '...' + new Date().toString();
+    let x = await Device.getInfo()
+    this.info = x.toString() + ` ${x.model} ${x.osVersion} ${x.name}`;
   }
   
   async logBatteryInfo() {
-    this.info = await Device.getBatteryInfo().toString();
+    this.info = '***' + new Date().toString();
+    let x = await Device.getBatteryInfo()
+    this.info = x.toString() + ` ${x.batteryLevel} ${x.isCharging}`;
   }
 }
