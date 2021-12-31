@@ -3,6 +3,7 @@ import { MenuController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
 interface CatFact {
   length: number;
@@ -36,5 +37,13 @@ export class Tab4Page {
       .pipe(
         tap(_ => console.log('fetched fact')),
       );
+  }
+  
+  async hapticsVibrate() {
+    await Haptics.vibrate();
+  }
+  
+  async hapticsImpact() {
+    await Haptics.impact({ style: ImpactStyle.Medium });
   }
 }
