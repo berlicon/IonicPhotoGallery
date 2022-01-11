@@ -32,4 +32,12 @@ export class Tab5Page {
     });
   }
 
+  loadImage() {
+    alert('loadImage');
+  }
+
+  faceDetect() {
+    alert('faceDetect');
+  }
+
 }
