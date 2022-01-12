@@ -35,7 +35,7 @@ export class Tab5Page {
 
   testModel() {
     debugger;
-    alert('Not work. Miggrated @tensorflow/tfjs 3.8.0->3.12.0 in order to correct run face-api, But now not work model. Error: hash_util.d.ts:3:69 - error TS2304: Cannot find name Long');
+    alert('Not work. Migrated @tensorflow/tfjs 3.8.0->3.12.0 in order to correct run face-api, But now not work model. Error: hash_util.d.ts:3:69 - error TS2304: Cannot find name Long');
     /*
     // Define a model for linear regression.
     const model = tf.sequential();
