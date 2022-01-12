@@ -8,11 +8,11 @@
 
 <ion-content [fullscreen]="true">
   <ion-button (click)="testModel()">test Model</ion-button>
-  <ion-button (click)="loadImage()">Load image</ion-button>
   <ion-button (click)="faceDetect()">Face detect</ion-button>
+  <input id="myFileUpload" #myFileUpload type="file" (change)="uploadImage()" accept=".jpg, .jpeg, .png">
   <br>
-  <img id="inputImg" src="https://flxt.tmsimg.com/assets/p185554_b_v10_az.jpg" style="max-width: 800px;" />
-  <canvas id="overlay"></canvas>
 
+  <img id="inputImg" #inputImg src="https://flxt.tmsimg.com/assets/p185554_b_v10_az.jpg" style="max-width: 800px;" crossorigin='anonymous' />
+  <canvas id="overlay" #overlay></canvas>
 
 </ion-content>
